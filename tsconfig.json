@@ -7,7 +7,7 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "NodeNext",
+    "module": "NodeNext", // esm 模式要用 NodeNext ，才會檢查路徑附檔名，還有型別引入是否有使用 import type {} 等等
     "target": "esnext",
     // "types": [],
     // For nodejs:
