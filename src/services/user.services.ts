@@ -1,6 +1,6 @@
-import { IUserRepository } from "../repositories/user.repository.interface";
+import type { IUserRepository } from "../repositories/user.repository.interface";
 import { HashHelper } from "../utils/hash";
-import { RegisterDTO, LoginDTO } from "../types/user";
+import type { RegisterDTO, LoginDTO } from "../types/user";
 
 export class UserService {
   constructor(private userRepository: IUserRepository) {}

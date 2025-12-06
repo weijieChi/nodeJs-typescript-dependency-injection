@@ -1,5 +1,5 @@
-import { IUserRepository } from "./user.repository.interface";
-import { User } from "../models/user.model";
+import type { IUserRepository } from "./user.repository.interface";
+import type { User } from "../models/user.model";
 
 export class UserRepository implements IUserRepository {
   private user: User[] = [];
