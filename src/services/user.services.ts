@@ -1,5 +1,5 @@
 import type { IUserRepository } from "../repositories/user.repository.interface";
-import { HashHelper } from "../utils/hash";
+import { HashHelper } from "../utils/hash.js";
 import type { RegisterDTO, LoginDTO } from "../types/user";
 
 export class UserService {

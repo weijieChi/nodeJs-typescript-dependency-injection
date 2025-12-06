@@ -1,6 +1,6 @@
-import { UserRepository } from "../repositories/user.repository";
-import { UserService } from "../services/user.services";
-import { UserController } from "../controllers/user.controller";
+import { UserRepository } from "../repositories/user.repository.js";
+import { UserService } from "../services/user.services.js";
+import { UserController } from "../controllers/user.controller.js";
 
 export const createUserModule = () => {
   const userRepository = new UserRepository();

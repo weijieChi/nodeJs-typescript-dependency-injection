@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { container } from "../di/container";
+import { container } from "../di/container.js";
 
 const router = Router();
 const userController = container.userController;
