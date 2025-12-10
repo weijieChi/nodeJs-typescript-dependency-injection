@@ -2,11 +2,9 @@ import type { PrismaClient, User, Prisma } from "../generated/prisma/client.js";
 import type { IUserRepository } from "./user.repository.interface.js";
 
 export class UserRepository implements IUserRepository {
-
   constructor(private prisma: PrismaClient) {}
 
   async createUser(data: Prisma.UserCreateInput): Promise<User> {
-
     return this.prisma.user.create({
       data,
     });
@@ -20,6 +18,12 @@ export class UserRepository implements IUserRepository {
 
     return this.prisma.user.findUnique({
       where: { name },
+    });
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.prisma.user.findUnique({
+      where: { email },
     });
   }
 }
