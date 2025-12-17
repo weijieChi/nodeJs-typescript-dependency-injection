@@ -15,7 +15,6 @@ morgan.format("http-json", (tokens, req, res) => {
     status: Number(tokens.status?.(req, res) ?? 0),
     contentLength: tokens.res?.(req, res, 'content-length') ?? "-",
     responseTimeMs: Number(tokens["response-time"]?.(req, res) ?? 0),
-    timestamp: new Date().toISOString(),
   });
 });
 
