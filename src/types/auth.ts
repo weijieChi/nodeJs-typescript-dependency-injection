@@ -20,9 +20,16 @@ export const RegisterSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
 
+
+/**
+ * 登入策略：
+ * - session：瀏覽器 / SSR
+ * - jwt：API / mobile / token-based
+ */
 export const LoginSchema = z.object({
   email: z.email("Email format error"),
   password: z.string().min(1, "Password is required"),
+  authStrategy: z.enum(["session", "jwt"]).optional(),
 });
 
 // 自動產生 TypeScript 型別

@@ -2,7 +2,7 @@
 
 import { UserService } from "../services/user.services.js";
 import type { Request, Response } from "express";
-import type { RegisterDTO, LoginDTO } from "../types/user.js";
+import type { RegisterDTO, LoginDTO } from "../types/auth.js";
 
 export class UserController {
   constructor(private userServices: UserService) {}

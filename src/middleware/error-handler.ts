@@ -18,6 +18,7 @@ export const generalErrorHandler = (
     method: req.method,
     url: req.originalUrl,
     ip: req.ip,
+    path: req.path,
     body: req.body,
     query: req.query,
     params: req.params,

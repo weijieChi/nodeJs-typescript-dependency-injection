@@ -1,5 +1,5 @@
 import type { User } from "../generated/prisma/client.js";
-import type { RegisterDTO } from "../types/user.js";
+import type { RegisterDTO } from "../types/auth.js";
 
 export interface IUserRepository {
   createUser(user: RegisterDTO): Promise<User>;

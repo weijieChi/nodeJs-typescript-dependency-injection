@@ -3,7 +3,7 @@ import { container } from "../di/container.js";
 import { asyncHandler } from "../utils/async--handler.js";
 import { notFoundHandler } from "../middleware/not-found.js";
 import { validate } from "../middleware/validate.js";
-import { RegisterSchema, LoginSchema } from "../types/user.js";
+import { RegisterSchema } from "../types/auth.js";
 
 const router = Router();
 const userController = container.userController;
@@ -11,9 +11,9 @@ const userController = container.userController;
 router.post("/register",
   validate(RegisterSchema),
   asyncHandler(userController.register));
-router.post("/login",
-  validate(LoginSchema),
-  asyncHandler(userController.login));
+// router.post("/login",
+//   validate(LoginSchema),
+//   asyncHandler(userController.login));
 
 // 路由最後掛錯誤處理
 

@@ -1,7 +1,7 @@
 // Service 層丟 AppError
 
 import type { IUserRepository } from "../repositories/user.repository.interface.ts";
-import type { RegisterDTO, LoginDTO } from "../types/user.ts";
+import type { RegisterDTO, LoginDTO } from "../types/auth.js";
 import type { User } from "../generated/prisma/client.js"
 import { HashHelper } from "../utils/hash.js";
 import { AppError } from "../errors/app-error.js";
