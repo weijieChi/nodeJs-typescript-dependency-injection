@@ -33,7 +33,8 @@ export class SessionRepository {
   /**
    * 找有效 session（存在且未過期）
    */
-  async findValid(sessionId: string, now = new Date()) {
+  async findValid(sessionId: string) {
+    const now = new Date();
     return this.prisma.session.findFirst({
       where: {
         id: sessionId,
@@ -57,7 +58,7 @@ export class SessionRepository {
             name: true,
             email: true,
             createdAt: true,
-            updateAt: true,
+            updatedAt: true,
           }
         }
       }

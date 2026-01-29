@@ -6,18 +6,17 @@ import { logger } from "../../logger/winston.logger.js";
 // import * as jwtController from "./auth.jwt.controller.js"; // 未來
 
 export async function login(req: Request, res: Response, next: NextFunction) {
-  logger.info("req.body", { body: req.body });
+  logger.info("auth.controller.ts req.body", { body: req.body });
   const parsed = LoginSchema.safeParse(req.body);
 
 
   if (!parsed.success) {
     throw new AppError("Invalid login payload", 400, { zodError: parsed.error.issues, }); 
   }
-  logger.info("parsed.data", { parsed: {...parsed.data} })
+  logger.info("auth.controller parsed.data", { parsed: {...parsed.data} })
 
   const { authStrategy } = parsed.data;
-  // logger.info("authStrategy", typeof(authStrategy) )
-  // console.log("authStrategy:", authStrategy)
+  // logger.info("auth.controller authStrategy", typeof(authStrategy) )
   // session
   if (authStrategy === "session") {
     return sessionController.login(req, res, next)

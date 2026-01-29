@@ -5,8 +5,9 @@ export type SafeUser = Prisma.UserGetPayload<{
     id: true;
     name: true;
     email: true;
+    securityStamp: true;
     createdAt: true;
-    updateAt: true;
+    updatedAt: true;
   };
 }>;
 

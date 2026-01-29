@@ -1,33 +1,25 @@
 import type { Request, Response, NextFunction } from "express";
-import { container } from "../../di/container.js";
 import { AppError } from "../../errors/app-error.js";
 
 /**
  * Session authentication middleware
  *
- * 職責：
- * - 從 cookie 讀取 sid
- * - 驗證 session 是否存在 / 是否過期
- * - 掛載 req.user
- * - 視需要延長 session（sliding expiration）
+ * 前提：
+ * - express-session 已啟用
+ * - passport.session() 已執行
+ * - deserializeUser 已負責驗證 session 合法性
  */
 
 export async function ensureSessionAuth(
   req: Request,
   _res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   try {
-    const sid = req.cookies?.sid;
-    if(!sid) {
+    if (!req.user) {
       return next(new AppError("Unauthenticated", 401));
     }
-    // ✅ 一次查出 session + user，並完成過期檢查， session 延期檢查
-    const session = await container.session.services.getValidSessionWithUser(sid);
-    if(!session) {
-      return next(new AppError("session expired or invalid", 401));
-    }
-    req.user = session.user; 
+    // req.user 已經是「通過 deserializeUser 驗證」的 safe user
     return next();
   } catch (err) {
     next(err);
