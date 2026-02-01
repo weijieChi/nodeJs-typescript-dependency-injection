@@ -59,6 +59,7 @@ export class AuthController {
     }
 
     const { authStrategy } = parsed.data;
+    // 已經有 zod runtime schema ，就不需要再判斷了
     // if (!authStrategy) {
     //   throw new AppError("authStrategy is required", 400);
     // }
