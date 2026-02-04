@@ -60,6 +60,8 @@ app.use(
 app.use(passport.initialize()); // passport initialize
 app.use(passport.session()); // passport session（serialize / deserialize）
 
+app.use(express.static("public"));
+
 /* ---------------- routes ---------------- */
 app.use(httpLogger); // httpLogger
 // initLocalStrategy(); // 舊的手寫的

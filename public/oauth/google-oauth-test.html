@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>google oauth test</title>
+</head>
+
+<body>
+  <h1>Google OAuth Test</h1>
+
+  <button id="login">Login with Google</button>
+
+  <pre id="result">Not logged in</pre>
+
+  <script>
+    document.getElementById("login").onclick = () => {
+      // ❗一定是 redirect
+      window.location.href = "/auth/google";
+    };
+  </script>
+</body>
+
+</html>
