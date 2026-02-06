@@ -28,7 +28,7 @@ export class JwtRefreshService {
     if (record.securityStamp !== payload.securityStamp) {
       // 這裡通常會觸發「全體失效」
       await this.jwtRepository.revokeAllByUser(record.userId);
-      throw new AppError("Session invalidated", 401);
+      throw new AppError("token invalidated", 401);
     }
 
     // 5️⃣ rotation：先撤銷舊的

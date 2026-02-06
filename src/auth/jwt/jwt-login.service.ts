@@ -15,7 +15,7 @@ export class JwtLoginService {
     private readonly jwtService: JwtService,
     private readonly jwtRepository: JwtRepository,
   ) {}
-  
+
   /**
    * 帳密登入
    */
@@ -32,7 +32,7 @@ export class JwtLoginService {
       throw new AppError("Invalid credentials", 401);
     }
 
-    const { accessToken, refreshToken } = await this.issueJwtForUser(user)
+    const { accessToken, refreshToken } = await this.issueJwtForUser(user);
 
     return {
       user: {
@@ -46,15 +46,16 @@ export class JwtLoginService {
   }
 
   async loginWithUser(user: User) {
-    const { accessToken, refreshToken } = await this.issueJwtForUser(user)
-    return { accessToken, refreshToken }
+    const { accessToken, refreshToken } = await this.issueJwtForUser(user);
+    return { accessToken, refreshToken };
   }
 
   private async issueJwtForUser(user: User): Promise<JwtIssueResult> {
     // access token
     const accessToken = this.jwtService.signAccessToken(user.id);
 
-     // refresh token
+    // refresh token
+
     const { token: refreshToken, payload } = this.jwtService.signRefreshToken(
       user.id,
       user.securityStamp,
@@ -67,6 +68,6 @@ export class JwtLoginService {
       expiresAt: new Date(payload.exp * 1000),
     });
 
-    return { accessToken, refreshToken }
+    return { accessToken, refreshToken };
   }
 }

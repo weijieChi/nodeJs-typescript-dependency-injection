@@ -1,5 +1,4 @@
 import type { PrismaClient } from "../../generated/prisma/client.js";
-
 import type { UserRepository } from "../../repositories/user.repository.js";
 import type { JwtLoginService } from "../jwt/jwt-login.service.js";
 
@@ -40,9 +39,7 @@ export interface GoogleOAuthModuleDependencies {
 
 export function createGoogleOAuthModule(deps: GoogleOAuthModuleDependencies) {
   // Google OAuth SDK wrapper
-  const googleOAuthService = new GoogleOAuthServiceImpl(
-    deps.googleOAuthConfig,
-  );
+  const googleOAuthService = new GoogleOAuthServiceImpl(deps.googleOAuthConfig);
 
   // OAuthAccount repository（Prisma-based）
   const oauthAccountRepository = new OAuthAccountRepository(deps.prisma);
@@ -53,10 +50,10 @@ export function createGoogleOAuthModule(deps: GoogleOAuthModuleDependencies) {
     deps.userRepository,
     oauthAccountRepository,
     deps.jwtLoginService,
-  )
+  );
 
   return {
     googleOAuthService,
-    oauthLoginService
-  }
+    oauthLoginService,
+  };
 }

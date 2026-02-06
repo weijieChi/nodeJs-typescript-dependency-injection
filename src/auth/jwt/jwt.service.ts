@@ -4,6 +4,7 @@
 
 import jwt from "jsonwebtoken";
 import { v7 as uuidv7 } from "uuid";
+// import { logger } from "../../logger/winston.logger.js";
 
 import {
   JwtPayloadSchema,

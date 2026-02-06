@@ -1,4 +1,5 @@
 import { AppError } from "../../errors/app-error.js";
+import crypto from "node:crypto";
 
 import type { GoogleOAuthService } from "../oauth/google-oauth.service.js";
 import type { GoogleUserInfo } from "../oauth/google-oauth.types.js";
@@ -34,6 +35,21 @@ export class OAuthLoginService {
     private readonly oauthAccountRepository: OAuthAccountRepository,
     private readonly jwtLoginService: JwtLoginService,
   ) {}
+
+  /**
+   * 啟動 Google OAuth login flow
+   *
+   * Application-level API：
+   * - controller 不需要知道 Google SDK
+   */
+  getGoogleAuthorizeUrl(): string {
+    // OAuth 本來就建議要有 state
+    // 「目前為了簡化流程，
+    // OAuth state 僅用於滿足 OAuth 規範，
+    // 未做額外驗證，未來可擴充為 session-based state。」
+    const state = crypto.randomUUID()
+    return this.googleOAuthService.generateAuthUrl(state);
+  }
 
   /**
    * Google OAuth login

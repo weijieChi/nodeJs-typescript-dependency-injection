@@ -3,13 +3,17 @@ import session from "express-session";
 import passport from "passport";
 import cookieParser from "cookie-parser";
 import pgSession from "connect-pg-simple";
+import "dotenv/config";
 // import { initLocalStrategy } from "./auth/strategies/local.strategy.init.js"; // 舊的手寫 session
 import { pool } from "./libs/pg.js";
 import { httpLogger } from "./logger/morgan.middleware.js";
 import { generalErrorHandler } from "./middleware/error-handler.js";
 
+// router
 import userRoutes from "./routes/user.routes.js";
 import authRouter from "./auth/routes/auth.routes.js";
+// import createGoogleOAuthRouter from "./auth/routes/google-oauth.routes.js"
+import { container } from "./di/container.js";
 
 // ✅ 1️⃣ 只要 import，就會執行 serialize / deserialize
 import "./auth/strategies/strategies.index.js";
@@ -67,6 +71,7 @@ app.use(httpLogger); // httpLogger
 // initLocalStrategy(); // 舊的手寫的
 app.use("/user", userRoutes);
 app.use("/auth", authRouter);
+app.use("/auth", container.googleOAuthRouter);
 app.get("/", (req, res) => {
   res.json({ message: "server is running." });
 });
