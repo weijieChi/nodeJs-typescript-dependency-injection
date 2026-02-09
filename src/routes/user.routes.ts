@@ -29,7 +29,8 @@ router.get(
 
     const user = await container.userRepository.findById(id);
     if (!user) {
-      next(new Error("user not found"));
+      res.status(404).json({ message: "User not found" });
+      return;
     }
     res.json(user);
   },
