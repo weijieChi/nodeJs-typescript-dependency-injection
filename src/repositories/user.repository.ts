@@ -1,4 +1,8 @@
-import { type PrismaClient, type User, Prisma } from "../generated/prisma/client.js";
+import {
+  type PrismaClient,
+  type User,
+  Prisma,
+} from "../generated/prisma/client.js";
 import type { IUserRepository } from "./user.repository.interface.js";
 import type { SafeUser } from "../types/express.js";
 
@@ -20,10 +24,10 @@ export class UserRepository implements IUserRepository {
     const users = this.prisma.user.findMany({
       where: { name },
     });
-    if((await users).length === 0) {
-      return null
+    if ((await users).length === 0) {
+      return null;
     } else {
-      return users
+      return users;
     }
   }
 
@@ -33,7 +37,7 @@ export class UserRepository implements IUserRepository {
     });
   }
 
-  async findById(id: number): Promise<SafeUser | null>{
+  async findById(id: number): Promise<SafeUser | null> {
     return this.prisma.user.findUnique({
       where: { id },
       select: {
@@ -43,8 +47,7 @@ export class UserRepository implements IUserRepository {
         securityStamp: true,
         createdAt: true,
         updatedAt: true,
-
-      }
-    })
+      },
+    });
   }
 }

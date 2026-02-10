@@ -2,7 +2,7 @@
 
 import type { IUserRepository } from "../repositories/user.repository.interface.ts";
 import type { RegisterDTO, LoginDTO } from "../types/auth.js";
-import type { User } from "../generated/prisma/client.js"
+import type { User } from "../generated/prisma/client.js";
 import { HashHelper } from "../utils/hash.js";
 import { AppError } from "../errors/app-error.js";
 
@@ -24,14 +24,14 @@ export class UserService {
   }
 
   async login(data: LoginDTO): Promise<User> {
-    if(!data) {
-      throw new AppError("user.services.ts login data not found")
+    if (!data) {
+      throw new AppError("user.services.ts login data not found");
     }
     const user = await this.userRepository.findByEmail(data.email);
     if (!user) throw new AppError("User not found!", 404);
-    
+
     if (!user.password) {
-      throw new AppError("user.services.ts login user.password not found")
+      throw new AppError("user.services.ts login user.password not found");
     }
     const match = await HashHelper.compare(data.password, user.password);
     if (!match) throw new AppError("Invalid password!", 401);

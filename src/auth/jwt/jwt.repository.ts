@@ -27,7 +27,7 @@ export class JwtRepository {
         type: "REFRESH",
         revoked: false,
         expiresAt: {
-          gt: new Date()
+          gt: new Date(),
         },
       },
     });
@@ -47,7 +47,7 @@ export class JwtRepository {
         type: "REFRESH",
         revoked: false,
       },
-      data: { revoked: true }
-    })
+      data: { revoked: true },
+    });
   }
 }

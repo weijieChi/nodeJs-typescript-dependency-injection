@@ -1,2 +1,2 @@
 export { logger } from "./winston.logger.js";
-export { httpLogger } from "./morgan.middleware.js"
+export { httpLogger } from "./morgan.middleware.js";

@@ -10,12 +10,8 @@
     "target": "esnext",
     // "types": [],
     // For nodejs:
-    "lib": [
-      "esnext"
-    ],
-    "types": [
-      "node"
-    ],
+    "lib": ["esnext"],
+    "types": ["node"],
     "moduleResolution": "NodeNext", // 新增
     "esModuleInterop": true, // 新增
     // and npm install -D @types/node
@@ -40,17 +36,15 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
-  "include": [
-    "src",
-    "src/types/express.d.ts"
-  ],
+  "include": ["src", "src/types/express.d.ts"],
   "exclude": [
     "node_modules",
     "dist",
     "src/auth/routes/old.auth.routes.ts",
     "src/auth/controllers/old.auth.controller.ts",
-    "src/auth/controllers/old.auth.controller.ts",
+    "src/auth/repositories/old.session.repository.ts",
+    "src/auth/services/old.session.service.ts"
   ]
 }

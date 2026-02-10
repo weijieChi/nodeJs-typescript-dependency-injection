@@ -17,8 +17,8 @@ type SessionPayload = {
 // Passport 的型別預設把 user 當 Express.User（SafeUser），但登入當下 strategy 可能給的是 prisma user。
 // 這是 adapter 邊界，使用斷言是合理做法。
 passport.serializeUser((user: Express.User, done) => {
-  if(!user) {
-    return done( new Error("Invalid user data"));
+  if (!user) {
+    return done(new Error("Invalid user data"));
   }
   return done(null, { userId: user.id, securityStamp: user.securityStamp });
 });

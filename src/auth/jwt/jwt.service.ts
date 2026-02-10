@@ -54,10 +54,10 @@ export class JwtService {
 
     const token = jwt.sign(payload, this.secret);
 
-    return {token, payload};
+    return { token, payload };
   }
 
-  verifyToken(token:string): JwtPayload {
+  verifyToken(token: string): JwtPayload {
     const decoded = jwt.verify(token, this.secret);
     return JwtPayloadSchema.parse(decoded);
   }

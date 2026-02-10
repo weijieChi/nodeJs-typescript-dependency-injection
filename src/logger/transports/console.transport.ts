@@ -6,6 +6,6 @@ export const consoleTransport = new transports.Console({
     format.timestamp(),
     format.printf(({ level, message, timestamp }) => {
       return `[${timestamp}] ${level}: ${message}`;
-    })
+    }),
   ),
 });

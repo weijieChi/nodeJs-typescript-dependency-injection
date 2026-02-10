@@ -9,7 +9,7 @@ export class UserController {
 
   register = async (
     req: Request<unknown, unknown, RegisterDTO>,
-    res: Response
+    res: Response,
   ) => {
     // try {
     //   // const { name, email, password } = req.body;

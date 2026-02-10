@@ -3,7 +3,7 @@ import { pool } from "../../libs/pg.js";
 export async function syncExpressSession(
   sid: string,
   userId: number,
-  securityStamp: string
+  securityStamp: string,
 ) {
   await pool.query(
     `
@@ -12,6 +12,6 @@ export async function syncExpressSession(
         "securityStamp" = $2
     WHERE sid = $3
     `,
-    [userId, securityStamp, sid]
+    [userId, securityStamp, sid],
   );
 }

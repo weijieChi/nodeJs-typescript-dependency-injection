@@ -4,7 +4,7 @@ import { prisma } from "../libs/prisma.js";
 import { createAuthModule } from "../auth/di/jwt-auth.module.js";
 import "dotenv/config";
 
-import { createSessionModule } from "../auth/modules/session.module.js";
+import { createSessionModule } from "../auth/modules/old.session.module.js";
 
 import { createGoogleModule } from "./google.module.js";
 

@@ -11,12 +11,12 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
     rules: {
       // 可以使用 (vars: _ignore) 去用 types 忽略某變數
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
-    ]
-  }
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+    },
   },
-  
+
   tseslint.configs.recommended,
 ]);

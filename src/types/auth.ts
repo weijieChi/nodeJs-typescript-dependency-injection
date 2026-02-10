@@ -20,7 +20,6 @@ export const RegisterSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
 
-
 /**
  * 登入策略：
  * - session：瀏覽器 / SSR

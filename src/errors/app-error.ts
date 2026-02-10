@@ -1,11 +1,11 @@
 export class AppError extends Error {
-statusCode: number;
-meta?: Record<string, unknown>;
+  statusCode: number;
+  meta?: Record<string, unknown>;
 
   constructor(
     message: string,
-    statusCode:number = 400,
-    meta?: Record<string, unknown>
+    statusCode: number = 400,
+    meta?: Record<string, unknown>,
   ) {
     super(message);
     this.statusCode = statusCode;

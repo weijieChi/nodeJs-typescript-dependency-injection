@@ -33,4 +33,4 @@ export const JwtPayloadSchema = z.discriminatedUnion("type", [
   RefreshTokenPayloadSchema,
 ]);
 
-export type JwtPayload = z.infer<typeof JwtPayloadSchema>
+export type JwtPayload = z.infer<typeof JwtPayloadSchema>;

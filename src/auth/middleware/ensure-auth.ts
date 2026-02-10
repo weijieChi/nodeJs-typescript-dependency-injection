@@ -14,7 +14,6 @@ export async function ensureAuth(
   // Session fallback
   const jwtAuthMiddleware = jwtAuth(container.jwtService);
 
-
   const authHeader = req.headers.authorization;
 
   // 1️⃣ 有 Bearer token → JWT

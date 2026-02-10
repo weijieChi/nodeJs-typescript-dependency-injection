@@ -8,9 +8,8 @@ export const generalErrorHandler = (
   err: unknown,
   req: Request,
   res: Response,
-  _next: NextFunction
+  _next: NextFunction,
 ) => {
-
   // ================================
   // ⭐ 統一記錄 Error Log（Winston）
   // ================================
@@ -22,7 +21,7 @@ export const generalErrorHandler = (
     body: req.body,
     query: req.query,
     params: req.params,
-    error: err instanceof Error ? err.message: String(err),
+    error: err instanceof Error ? err.message : String(err),
     stack: err instanceof Error ? err.stack : undefined,
   });
 

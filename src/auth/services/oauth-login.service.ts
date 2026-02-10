@@ -47,7 +47,7 @@ export class OAuthLoginService {
     // 「目前為了簡化流程，
     // OAuth state 僅用於滿足 OAuth 規範，
     // 未做額外驗證，未來可擴充為 session-based state。」
-    const state = crypto.randomUUID()
+    const state = crypto.randomUUID();
     return this.googleOAuthService.generateAuthUrl(state);
   }
 

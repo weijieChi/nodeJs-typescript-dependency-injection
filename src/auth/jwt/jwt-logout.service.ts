@@ -14,7 +14,6 @@ export class JwtLogoutService {
       throw new AppError("Invalid token", 401);
     }
 
-
     // 但我不建議你現在加，因為：
     // logout 本來就是 best-effort
     // client 重送 logout 不該爆炸

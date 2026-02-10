@@ -1,5 +1,5 @@
-import { SessionRepository } from "../repositories/session.repository.js";
-import { SessionService } from "../services/session.service.js";
+import { SessionRepository } from "../repositories/old.session.repository.js";
+import { SessionService } from "../services/old.session.service.js";
 import type { PrismaClient } from "../../generated/prisma/client.js";
 
 export function createSessionModule(prisma: PrismaClient) {
@@ -10,6 +10,6 @@ export function createSessionModule(prisma: PrismaClient) {
     session: {
       repository: sessionRepository,
       services: sessionService,
-  }
-  }
+    },
+  };
 }

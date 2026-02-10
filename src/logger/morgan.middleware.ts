@@ -9,12 +9,12 @@ const stream = {
 morgan.format("http-json", (tokens, req, res) => {
   return JSON.stringify({
     type: "http", // 用於表示 log 的來源
-    remoteAddr: tokens['remote-addr']?.(req, res) ?? "-",
+    remoteAddr: tokens["remote-addr"]?.(req, res) ?? "-",
     method: tokens.method?.(req, res) ?? "-", // ?. ??
     url: tokens.url?.(req, res) ?? "-",
     status: Number(tokens.status?.(req, res) ?? 0),
     session: tokens.session?.(req, res) ?? "-",
-    contentLength: tokens.res?.(req, res, 'content-length') ?? "-",
+    contentLength: tokens.res?.(req, res, "content-length") ?? "-",
     responseTimeMs: Number(tokens["response-time"]?.(req, res) ?? 0),
   });
 });

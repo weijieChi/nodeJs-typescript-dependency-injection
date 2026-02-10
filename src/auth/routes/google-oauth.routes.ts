@@ -2,7 +2,6 @@
 // ✔ auth sub-module 完全不知道 router 存在
 // ✔ controller 只依賴 use case
 
-
 import { Router } from "express";
 import type { GoogleOAuthController } from "../controllers/google-oauth-controller.js";
 

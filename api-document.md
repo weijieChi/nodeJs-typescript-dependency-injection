@@ -1,7 +1,7 @@
 # API Documentation
 
 > This is a demo project for portfolio purposes.
->  It is **not intended for production use**.
+> It is **not intended for production use**.
 
 > Some security-related fields are intentionally exposed to demonstrate
 > authentication flows, token invalidation logic, and internal state changes.
@@ -79,8 +79,8 @@ Response
 
 This project demonstrates a **hybrid authentication design**, supporting both:
 
-* Session-based authentication (cookie-based)
-* JWT-based authentication (access token + refresh token)
+- Session-based authentication (cookie-based)
+- JWT-based authentication (access token + refresh token)
 
 The login behavior is determined by the `authStrategy` field in the request body.
 
@@ -93,6 +93,7 @@ authStrategy: "session" | "jwt"
 ```
 
 #### Session 登入
+
 Request POST `/auth/login`
 
 ```json
@@ -115,6 +116,7 @@ Response
   "authType": "session"
 }
 ```
+
 and session cookie `sid`
 
 JWT 登入
@@ -162,15 +164,17 @@ to a login success page.
 > This implementation is intended to demonstrate OAuth integration logic,
 > not a full production-ready OAuth frontend.
 
-
 ### 登出 logout
+
 POST `/auth/logout`
+
 #### JWT logout
+
 If the request body contains a `refreshToken`,
 the backend will treat the request as a JWT logout and:
 
-* Revoke the corresponding refresh token in the database
-* Invalidate the token for that specific device/session
+- Revoke the corresponding refresh token in the database
+- Invalidate the token for that specific device/session
 
 在 request 帶有 refreshToken 就會執行 JWT 登出，並把該裝置的 refreshToken 在後端資料庫註銷
 
@@ -179,7 +183,8 @@ the backend will treat the request as a JWT logout and:
   "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
-Response: http 204
+
+Response: HTTP `204 No Content`
 
 #### session logout
 
@@ -191,7 +196,6 @@ If a session exists, the server will destroy the session.
 如果在 `/auth/logout` 沒有在 request json 放 refreshToken ，那後端會檢查 request 是否有 sid cookie ，如果有就執行 session logout
 
 Response: HTTP `204 No Content`
-
 
 ---
 
@@ -206,24 +210,27 @@ GET `/user/profile/`
 ```
 Authorization: Bearer <accessToken>
 ```
+
 或是有效的 session `sid` cookie
 
-* JWT Bearer access token
+- JWT Bearer access token
 
   ```
   Authorization: Bearer <accessToken>
   ```
-* or a valid session cookie (`sid`)
+
+- or a valid session cookie (`sid`)
 
 Response
+
 ```json
 {
-    "id": 1,
-    "name": "user1",
-    "email": "user1@example.com",
-    "securityStamp": "5a398e66-377e-4370-b728-3dbe2976fe27",
-    "createdAt": "2026-01-28T15:19:28.067Z",
-    "updatedAt": "2026-01-28T15:19:28.067Z"
+  "id": 1,
+  "name": "user1",
+  "email": "user1@example.com",
+  "securityStamp": "5a398e66-377e-4370-b728-3dbe2976fe27",
+  "createdAt": "2026-01-28T15:19:28.067Z",
+  "updatedAt": "2026-01-28T15:19:28.067Z"
 }
 ```
 
@@ -241,11 +248,11 @@ demonstrated in this project.
 
 This project demonstrates a hybrid authentication architecture that supports:
 
-* Session-based authentication (cookie + server-side session storage)
-* JWT-based authentication with access/refresh token rotation
-* Per-device refresh token revocation
-* Use a securityStamp mechanism that, when an account's state changes, the backend revokes all old state tokens and sessions.
-* OAuth login integration (Google OAuth demo)
+- Session-based authentication (cookie + server-side session storage)
+- JWT-based authentication with access/refresh token rotation
+- Per-device refresh token revocation
+- Use a securityStamp mechanism that, when an account's state changes, the backend revokes all old state tokens and sessions.
+- OAuth login integration (Google OAuth demo)
 
 The primary goal of this project is to showcase authentication design,
 trade-offs, and implementation details rather than production deployment.
@@ -254,11 +261,11 @@ trade-offs, and implementation details rather than production deployment.
 
 專案展示了一種混合式身分驗證架構，支援：
 
-* 基於 session 的身份驗證（Cookie + 伺服器端 session 儲存）
-* 基於 JWT 的身份驗證，支援存取 access token/refresh token 的發放與輪替
-* 基於裝置的 refresh token 撤銷
-* 使用 securityStamp 機制，當帳號狀態改變時，後端可撤銷所有舊有狀態的 token 與 session
-* OAuth 登入整合（Google OAuth 演示）
-本專案的主要目標是展示身份驗證設計、
+- 基於 session 的身份驗證（Cookie + 伺服器端 session 儲存）
+- 基於 JWT 的身份驗證，支援存取 access token/refresh token 的發放與輪替
+- 基於裝置的 refresh token 撤銷
+- 使用 securityStamp 機制，當帳號狀態改變時，後端可撤銷所有舊有狀態的 token 與 session
+- OAuth 登入整合（Google OAuth 演示）
+  本專案的主要目標是展示身份驗證設計
 
 權衡取捨和實現細節，而非生產部署。

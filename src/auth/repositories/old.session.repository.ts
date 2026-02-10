@@ -1,5 +1,5 @@
 import type { PrismaClient, Session } from "../../generated/prisma/client.js";
-import type { SessionWithUser } from "../../types/user.js"
+import type { SessionWithUser } from "../../types/user.js";
 
 export class SessionRepository {
   constructor(private prisma: PrismaClient) {}
@@ -43,11 +43,11 @@ export class SessionRepository {
     });
   }
 
-   /**
+  /**
    * 依 sessionId 查詢 session，並關聯 user
    */
   async findSessionWithUser(
-    sessionId: string
+    sessionId: string,
   ): Promise<SessionWithUser | null> {
     return this.prisma.session.findUnique({
       where: { id: sessionId },
@@ -59,10 +59,10 @@ export class SessionRepository {
             email: true,
             createdAt: true,
             updatedAt: true,
-          }
-        }
-      }
-    })
+          },
+        },
+      },
+    });
   }
 
   /**

@@ -1,0 +1,39 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+.out/
+.next/
+coverage/
+
+# cache / temp
+.cache/
+.tmp/
+temp/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env
+.env.*
+!.env.example
+
+# prisma
+prisma/migrations/
+
+# generated files
+**/*.min.js
+**/*.map
+**/*.d.ts
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store

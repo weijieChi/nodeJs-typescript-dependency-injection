@@ -5,12 +5,10 @@ import { JwtLogoutService } from "../jwt/jwt-logout.service.js";
 import { AuthController } from "../controllers/auth.controller.js";
 import type { PrismaClient } from "../../generated/prisma/client.js";
 
-export function createAuthModule(
-  deps: {
+export function createAuthModule(deps: {
   prisma: PrismaClient;
   jwtSecret: string;
-  }
-) {
+}) {
   const jwtService = new JwtService(deps.jwtSecret);
   const jwtRepository = new JwtRepository(deps.prisma);
 
