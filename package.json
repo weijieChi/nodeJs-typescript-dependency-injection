@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"No tests yet\"",
-    "dev": "tsx ./server.ts",
+    "dev": "tsx ./src/server.ts",
     "typecheck": "tsc --noEmit --pretty false",
     "build": "tsc",
     "start": "node ./dist/server.js",
