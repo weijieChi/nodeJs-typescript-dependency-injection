@@ -114,6 +114,18 @@ npm run start
 npm run prisma:studio
 ```
 
+## 測試帳號
+
+1. 
+   * email: user1@example.com
+   * password: 12345
+2. 
+   * email: user2@example.com
+   * password: 12345
+3. 
+   * email: user3@example.com
+   * password: 12345
+
 # API 使用
 
 本專案的 API 使用方式請參考專案內的 API 使用方式在專案的 [API 說明文件](./api-document.md)。
