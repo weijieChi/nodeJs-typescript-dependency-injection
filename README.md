@@ -29,6 +29,9 @@ OAuth 驗證成功後，不直接使用 Google 所簽發的 access token， 而�
 
 此外，專案中使用 Winston 作為 logger，用於記錄 request 資訊以及應用程式執行過程中產生的錯誤與狀態資訊。
 
+## 專案架構設計
+專案架構設計可以參考這份 [專案架構文件](./architecture-overview.md)
+
 ## Logging 與錯誤處理
 
 - 使用 Winston 作為 application logger
